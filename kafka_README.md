@@ -9,8 +9,8 @@ Durable message system**
                                         Apache KAfka
                                     ------CLUSter----------  
                                           BROKER, Broker....
-    Application ->                         TOPIC              -> Application
-    (Producer,Prod..)                   partitions                (Consumer, Consumer, Consumer)
+    Application ->                         TOPIC              
+    (Producer,Prod..)                   partitions              ---> Application  (Consumer, Consumer, Consumer)
 
 1.  Applications connect to this system and transfer a record onto the topic. 
 2.  A record can include any kind of information;
@@ -92,8 +92,15 @@ Website activity tracking **
  2. and the user with id 1 to partition 1, etc.
  3.  The "click" topic will be split up into three partitions (three users) on two different machines.
 
-    A user with user-id 0 clicks on a button on the website.
-    The web application publishes a record to partition 0 in the topic "click".
-    The record is appended to its commit log and the message offset is incremented.
-    The consumer can pull messages from the click-topic and show monitoring usage in real-time, or it can replay previously consumed messages by setting the offset to an earlier one.
+1. A user with user-id 0 clicks on a button on the website.
+2.   The web application publishes a record to partition 0 in the topic "click".
+3.    The record is appended to its commit log and the message offset is incremented.
+4.    The consumer can pull messages from the click-topic and show monitoring usage in real-time, 
+5.    or it can replay previously consumed messages by setting the offset to an earlier one.
+
+ **Kafka as a Database**
+
+Apache Kafka has another interesting feature not found in RabbitMQ - log compaction. Log compaction ensures that Kafka always retains the last known value for each record key. Kafka simply keeps the latest version of a record and deletes the older versions with the same key.
+
+An example of log compaction use is when displaying the latest status of a cluster among thousands of clusters running. The current status of the cluster is written into Kafka and the topic is configured to compact the records. When this topic is consumed, it displays the latest status first and then a continuous stream of new statuses. 
 
