@@ -103,4 +103,79 @@ Website activity tracking **
 Apache Kafka has another interesting feature not found in RabbitMQ - log compaction. Log compaction ensures that Kafka always retains the last known value for each record key. Kafka simply keeps the latest version of a record and deletes the older versions with the same key.
 
 An example of log compaction use is when displaying the latest status of a cluster among thousands of clusters running. The current status of the cluster is written into Kafka and the topic is configured to compact the records. When this topic is consumed, it displays the latest status first and then a continuous stream of new statuses. 
+************************************************************************
+As we talk about running Kafka on Kubernetes - Kafka runs as a cluster of nodes called Kafka brokers. Kafka was developed first as a messaging queue and works as a pub-sub model. It’s used as a popular message queue for distributed systems, and is commonly used to stream data in the Internet of Things use cases.
+**How Apache Kafka Works:**
+
+    Producers create messages and publish them to topics.
+    Kafka categorizes the messages into topics and stores them so that they are immutable.
+    Consumers subscribe to a specific topic and absorb the messages provided by the producers.
+
+**Zookeeper In Kafka**
+
+Zookeeper is used in Kafka for choosing the controller, and is used for service discovery for a Kafka broker that deploys in a Kubernetes cluster. Zookeeper sends changes of the topology to Kafka, so nodes in the cluster know when something is new, broken, joined, finished, or the same topic is removed or a new topic is added. Zookeeper must be deployed within the Kafka cluster for high availability.
+Kubernetes
+
+Nowadays every big company has shifted to Kubernetes, or is planning to do so. Kubernetes manages the cluster of worker and master nodes and allows you to deploy, scale, and automate containerized workloads such as Kafka. Kubernetes was first developed by Google as an in-house project to orchestrate their containerized technology and software known as Borg, maintained and developed by CNCF.
+
+***************kafka with kubernets **********************
+Enterprise IT is increasingly adopting microservices and cloud-native development, resulting in distributed systems populated by event-driven applications (EDA). In this dynamic development environment, many digital leaders are utilizing Apache Kafka and combining it with Kubernetes.
+
+**what is kubernetus**
+
+Kubernetes automates operational tasks of container management and includes built-in commands for deploying applications, rolling out changes to your applications, scaling your applications up and down to fit changing needs, monitoring your applications, and more—making it easier to manage applications. 
+
+
+**What are the benefits of Kubernetes?**
+**Automated operations**
+
+Kubernetes has built-in commands to handle a lot of the heavy lifting that goes into application management, allowing you to automate day-to-day operations. You can make sure applications are always running the way you intended them to run.
+**Infrastructure abstraction**
+
+When you install Kubernetes, it handles the compute, networking, and storage on behalf of your workloads. This allows developers to focus on applications and not worry about the underlying environment.
+**Service health monitoring**
+
+Kubernetes continuously runs health checks against your services, restarting containers that fail, or have stalled, and only making available services to users when it has confirmed they are running.
+
+**Kubernetes vs. Docker**
+
+Often misunderstood as a choice between one or the other, Kubernetes and Docker are different yet complementary technologies for running containerized applications. 
+
+Docker lets you put everything you need to run your application into a box that can be stored and opened when and where it is required. Once you start boxing up your applications, you need a way to manage them; and that's what Kubernetes does.
+
+Kubernetes is a Greek word meaning  ‘captain’ in English. Like the captain is responsible for the safe journey of the ship in the seas, Kubernetes is responsible for carrying and delivering those boxes safely to locations where they can be used.
+
+1. Kubernetes can be used with or without Docker
+2. Docker is not an alternative to Kubernetes, so it’s less of a “Kubernetes vs. Docker” question. 
+3. It’s about using Kubernetes with Docker to containerize your applications and run them at scale
+4. The difference between Docker and Kubernetes relates to the role each play in containerizing and running your applications
+5. Docker is an open industry standard for packaging and distributing applications in containers
+6. Kubernetes uses Docker to deploy, manage, and scale containerized applications
+**
+What is Kubernetes used for?**
+Kubernetes is used to create applications that are easy to manage and deploy anywhere. 
+When available as a managed service, Kubernetes offers you a range of solutions to meet your needs. Here are some common use cases.
+
+
+**ZooKeeper**
+https://www.tutorialspoint.com/zookeeper/zookeeper_overview.htm
+is a distributed co-ordination service to manage large set of hosts. Co-ordinating and managing a service in a distributed environment is a complicated process. ZooKeeper solves this issue with its simple architecture and API. ZooKeeper allows developers to focus on core application logic without worrying about the distributed nature of the application.
+**
+Benefits of Distributed Applications**
+
+    **Reliability** − Failure of a single or a few systems does not make the whole system to fail.
+
+    **Scalability** − Performance can be increased as and when needed by adding more machines with minor change in the configuration of the application with no downtime.
+
+    **Transparency** − Hides the complexity of the system and shows itself as a single entity / application.
+**
+Challenges of Distributed Applications**
+
+    **Race condition** − Two or more machines trying to perform a particular task, which actually needs to be done only by a single machine at any given time. For example, shared resources should only be modified by a single machine at any given time.
+    
+  Distributed applications offer a lot of benefits, but they throw a few complex and hard-to-crack challenges as well. ZooKeeper framework provides a complete mechanism to overcome all the challenges. Race condition and deadlock are handled using fail-safe synchronization approach. Another main drawback is inconsistency of data, which ZooKeeper resolves with atomicity
+
+    **Deadlock** − Two or more operations waiting for each other to complete indefinitely.
+
+    **Inconsistency** − Partial failure of data.
 
