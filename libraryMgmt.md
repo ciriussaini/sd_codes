@@ -117,9 +117,9 @@ class Search {
 
 class BookIssueService {
 
-	Fine fine;
+	Fine fine;   (for calcualtion of fine)
 
-	public BookReservationDetail getReservationDetail(BookItem book);
+	public BookReservationDetail getReservationDetail(BookItem book);   (we need to check whether that book is renewed or not -> issue book or not)
 
 	public void updateReservationDetail(BookReservationDetail bookReservationDetail);
 
@@ -143,7 +143,7 @@ class BookLending {
 
 class BookReservationDetail extends BookLending {
 
-	ReservationStatus reservationStatus;
+	ReservationStatus reservationStatus;     ReservationStatus is an enum ->
 
 }
 
