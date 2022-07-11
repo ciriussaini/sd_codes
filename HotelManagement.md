@@ -1,4 +1,5 @@
 https://drive.google.com/file/d/1QYX6zvIHREdJ6PjVt5-tVH-nj18F_-Zz/view
+
 class Hotel {
 	
 	String Name;
