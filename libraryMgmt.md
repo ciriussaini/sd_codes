@@ -7,24 +7,6 @@ class Library {
 	List<BookItem> books;
 }
 
-class Book {
-
-	String uniqueIdNumber;
-	String title;
-	List<Author> authors;
-	BookType bookType;
-}
-
-class BookItem extends Book {
-
-	String barcode;
-	Date publicationDate;
-	Rack rackLocation;
-	BookStatus bookStatus;
-	BookFormat bookFormat;
-	Date issueDate;
-}
-
 class Address {
 
 	int pinCode //ZipCode
@@ -34,10 +16,30 @@ class Address {
 	String country;
 }
 
+
+class Book {
+
+	String uniqueIdNumber;
+	String title;
+	List<Author> authors;
+	BookType bookType;
+}
+
+class BookItem extends Book {    (decoupling , different author books)
+
+	String barcode;
+	Date publicationDate;
+	Rack rackLocation;
+	BookStatus bookStatus;
+	BookFormat bookFormat;
+	Date issueDate;
+}
+
 public enum BookType {
 
 	SCI_FI, ROMANTIC, FANTASY, DRAMA;
 }
+
 
 public enum BookFormat {
 
@@ -56,14 +58,14 @@ class Rack {
 
 }
 
-class Person {
+class Person {               (defining actors)
 
 	String firstName;
 	String lastName;
 
 }
 
-class Author extends Person {
+class Author extends Person {        (list down book by all author)
 
 	List<Book> booksPublished;
 
@@ -76,7 +78,15 @@ class SystemUser extends Person {
 	Account account;
 }
 
-class Member extends SystemUsers {
+class Account {
+
+	String userName;
+	String password;
+	int accountId;
+}
+
+
+class Member extends SystemUsers { (how many books checked out by an member)
 
 	int totalBookCheckedOut;
 
@@ -95,12 +105,6 @@ class Librarian extends SystemUsers {
 	public BookItem editBookItem(BookItem bookItem);
 }
 
-class Account {
-
-	String userName;
-	String password;
-	int accountId;
-}
 
 class Search {
 
